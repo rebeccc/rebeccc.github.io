@@ -3909,54 +3909,29 @@ input, select, textarea {
 
 		}
 
-		/* typing effect by KS (https://codepen.io/CheeseTurtle) */
+		/* typing effect by  Geoff Graham (https://codepen.io/geoffgraham) */
 
-		*, *:before, *:after {
-			margin: 0;
-			@include box-sizing(border-box);
+		.typewriter h1 {
+		  color: #fff;
+		  font-family: monospace;
+		  overflow: hidden; /* Ensures the content is not revealed until the animation */
+		  border-right: .15em solid orange; /* The typwriter cursor */
+		  white-space: nowrap; /* Keeps the content on a single line */
+		  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+		  letter-spacing: .15em; /* Adjust as needed */
+		  animation:
+		    typing 3.5s steps(30, end),
+		    blink-caret .5s step-end infinite;
 		}
 
-		.container {
-			top: 45%;
-			width: 100%;
-			margin: 0 auto 0;
-			position: absolute;
+		/* The typing effect */
+		@keyframes typing {
+		  from { width: 0 }
+		  to { width: 100% }
 		}
 
-		.slogan {
-			width: 0;
-			margin: 0 auto;
-			padding: 2px 0 0;
-			letter-spacing: 2px;
-			text-align: center;
-			font-family: 'Courier New', monospace;
-			font-size: 32px;
-			font-weight: 300;
-			border-right: 6px solid #27ae60;
-			overflow: hidden;
-			position: relative;
-			display: block;
-			@include animation-name(blink-start, typing, blink-end);
-			@include animation-duration(1s, 1s, 1s);
-			@include animation-timing-function(linear, steps(13, end), linear);
-			@include animation-iteration-count(1,1,infinite);
-			@include animation-delay(0s, 1s, 2s);
-			@include animation-fill-mode(forwards);
-
-			span { display: block;  width: 260px; }
-		}
-
-		@include keyframes(typing) {
-			from { width: 0; }
-			to   { width: 270px; }
-		}
-
-		@include keyframes(blink-start) {
-			from, to { border-color: #27ae60; }
-			50% { border-color: transparent; }
-		}
-
-		@include keyframes(blink-end) {
-			from, to { border-color: #27ae60; }
-			50% { border-color: transparent; }
+		/* The typewriter cursor effect */
+		@keyframes blink-caret {
+		  from, to { border-color: transparent }
+		  50% { border-color: orange }
 		}
